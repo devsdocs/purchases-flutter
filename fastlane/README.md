@@ -93,6 +93,14 @@ Update hybrid common pod and gradle
 
 Trigger bump
 
+### build_paywalls_tester_for_maestro
+
+```sh
+[bundle exec] fastlane build_paywalls_tester_for_maestro
+```
+
+Build Paywall Tester for Maestro
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

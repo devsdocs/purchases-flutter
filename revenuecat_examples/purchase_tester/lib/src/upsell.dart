@@ -113,12 +113,17 @@ class _UpsellScreenState extends State<UpsellScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(children: [
                   const Text("Customer Center"),
-                  ElevatedButton(
-                    onPressed: () async {
-                      await RevenueCatUI.presentCustomerCenter();
-                    },
-                    child: const Text("Present Customer Center"),
-                  ),
+                  Semantics(
+                      label:
+                          'customer-center-sheet', // This becomes the accessibility ID in iOS
+                      button: true,
+                      child: ElevatedButton(
+                        key: const ValueKey('customer-center-sheet'),
+                        onPressed: () async {
+                          await RevenueCatUI.presentCustomerCenter();
+                        },
+                        child: const Text("Present Customer Center"),
+                      )),
                 ]))),
       ),
     ]);

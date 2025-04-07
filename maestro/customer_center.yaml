@@ -1,0 +1,4 @@
+appId: com.rc.valloveh
+---
+- launchApp
+- tapOn: Present Customer Center

@@ -30,7 +30,7 @@ orbs:
 parameters:
   action:
     type: enum
-    enum: [build, upgrade-hybrid-common, bump]
+    enum: [build, upgrade-hybrid-common, bump, run-maestro]
     default: build
   version:
     type: string
@@ -403,6 +403,26 @@ jobs:
           name: release
           command: bundle exec fastlane github_release_current_version
 
+  maestro_ios:
+    executor:
+      name: macos-executor
+    steps:
+      - checkout
+      - install-correct-cocoapods
+      - setup-flutter
+      - replace-api-key
+      - run:
+          name: Build PaywallsTester
+          command: bundle exec fastlane build_paywalls_tester_for_maestro
+      - run:
+          name: Install Maestro CLI
+          command: |
+            curl -Ls "https://get.maestro.mobile.dev" | bash
+      - run:
+          name: Run Maestro Tests
+          command: |
+            maestro test maestro/
+
 workflows:
   danger:
     jobs:
@@ -471,3 +491,11 @@ workflows:
       equal: [ upgrade-hybrid-common, << pipeline.parameters.action >> ]
     jobs:
       - update-hybrid-common-versions
+
+  manual-trigger-maestro:
+    when:
+      equal: [run-maestro, << pipeline.parameters.action >>]
+    jobs:
+      - maestro:
+          context:
+            - slack-secrets-ios
