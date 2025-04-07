@@ -500,6 +500,6 @@ workflows:
 
   manual-trigger-maestro:
     when:
-      equal: [run-maestro, << pipeline.parameters.action >>]
+      equal: [ run-maestro, << pipeline.parameters.action >> ]
     jobs:
       - maestro_ios
