@@ -416,6 +416,9 @@ jobs:
       - checkout
       - install-correct-cocoapods
       - setup-flutter
+      - run:
+          name: Install dependencies
+          command: bundle install
       - replace-api-key
       - run:
           name: Build PaywallsTester
