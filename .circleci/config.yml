@@ -496,6 +496,4 @@ workflows:
     when:
       equal: [run-maestro, << pipeline.parameters.action >>]
     jobs:
-      - maestro:
-          context:
-            - slack-secrets-ios
+      - maestro_ios:
