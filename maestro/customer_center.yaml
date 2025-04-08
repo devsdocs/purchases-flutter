@@ -1,4 +1,4 @@
-appId: com.rc.valloveh
+appId: com.revenuecat.sampleapp
 ---
 - launchApp
 - tapOn: Present Customer Center
