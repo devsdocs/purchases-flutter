@@ -421,11 +421,11 @@ jobs:
       - replace-api-key
       - flutter-get-dependencies:
           project: revenuecat_examples/purchase_tester
-      - build-flutter-project:
-          project: revenuecat_examples/purchase_tester
       - run:
-          name: Build PaywallsTester
-          command: bundle exec fastlane build_paywalls_tester_for_maestro
+          name: Run Flutter integration tests
+          command: |
+            cd revenuecat_examples/purchase_tester/ios
+            flutter run
       - run:
           name: Install Maestro CLI
           command: |
