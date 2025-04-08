@@ -447,7 +447,7 @@ jobs:
       - install-maestro-cli
       - run:
           name: Run Maestro Tests
-          command: maestro test maestro/
+          command: maestro test maestro/ios
 
   maestro_android:
     executor: android-executor
@@ -465,7 +465,7 @@ jobs:
       - install-maestro-cli
       - run:
           name: Run Maestro Tests
-          command: maestro test maestro/
+          command: maestro test maestro/android
 
 workflows:
   danger:
