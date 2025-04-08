@@ -423,7 +423,7 @@ jobs:
       - run:
           name: Run Flutter integration tests
           command: |
-            cd revenuecat_examples/purchase_tester
+            cd revenuecat_examples/purchase_tester/ios
             pod install
       - run:
           name: Build PaywallsTester
