@@ -25,7 +25,7 @@ orbs:
   gcp-cli: circleci/gcp-cli@2.1.0
   swissknife: roopakv/swissknife@0.65.0
   revenuecat: revenuecat/sdks-common-config@2.1.0
-  macos: circleci/macos@2.3.2
+  macos: circleci/macos@2.5.1
 
 parameters:
   action:
@@ -177,7 +177,7 @@ commands:
 executors:
   macos-executor:
     macos:
-      xcode: 16.3
+      xcode: 15.2
     resource_class: macos.m1.medium.gen1
     shell: /bin/bash --login -o pipefail
 
@@ -289,7 +289,7 @@ jobs:
     description: "Run integration tests for Flutter"
     resource_class: macos.m1.medium.gen1
     macos:
-      xcode: 16.3
+      xcode: 15.2
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
@@ -312,7 +312,7 @@ jobs:
     description: "Run integration tests for Flutter"
     resource_class: macos.m1.medium.gen1
     macos:
-      xcode: 16.3
+      xcode: 15.2
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
