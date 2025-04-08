@@ -428,7 +428,7 @@ jobs:
             echo "Booting simulator $DEVICE_ID"
             xcrun simctl boot "$DEVICE_ID" || true
             cd revenuecat_examples/purchase_tester/ios
-            flutter run -d $DEVICE_ID
+            flutter install -d $DEVICE_ID
       - run:
           name: Install Maestro CLI
           command: |
