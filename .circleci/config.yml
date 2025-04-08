@@ -450,6 +450,7 @@ jobs:
 
   maestro_android:
     executor: android-executor
+    resource_class: xlarge
     steps:
       - checkout
       - replace-api-key
