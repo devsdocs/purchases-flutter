@@ -48,7 +48,8 @@ commands:
           name: Install Maestro CLI
           command: |
             curl -Ls "https://get.maestro.mobile.dev" | bash
-
+            echo 'export PATH="$HOME/.maestro/bin:$PATH"' >> $BASH_ENV
+      
   replace-api-key:
     description: "replace API_KEY"
     steps:
