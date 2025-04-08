@@ -422,10 +422,13 @@ jobs:
       - flutter-get-dependencies:
           project: revenuecat_examples/purchase_tester
       - run:
-          name: Run Flutter integration tests
+          name: Run PaywallsTester
           command: |
+            DEVICE_ID=$(xcrun simctl list devices available | grep -E 'iPhone|iPad' | grep -Eo '[A-F0-9\-]{36}' | head -n1)
+            echo "Booting simulator $DEVICE_ID"
+            xcrun simctl boot "$DEVICE_ID" || true
             cd revenuecat_examples/purchase_tester/ios
-            flutter run
+            flutter run -d $DEVICE_ID
       - run:
           name: Install Maestro CLI
           command: |
