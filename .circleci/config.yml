@@ -420,11 +420,10 @@ jobs:
           name: Install dependencies
           command: bundle install
       - replace-api-key
-      - run:
-          name: Run Flutter integration tests
-          command: |
-            cd revenuecat_examples/purchase_tester/ios
-            pod install
+      - flutter-get-dependencies:
+          project: revenuecat_examples/purchase_tester
+      - build-flutter-project:
+          project: revenuecat_examples/purchase_tester
       - run:
           name: Build PaywallsTester
           command: bundle exec fastlane build_paywalls_tester_for_maestro
