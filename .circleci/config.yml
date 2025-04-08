@@ -177,7 +177,7 @@ commands:
 executors:
   macos-executor:
     macos:
-      xcode: 15.2
+      xcode: 16.3
     resource_class: macos.m1.medium.gen1
     shell: /bin/bash --login -o pipefail
 
@@ -289,7 +289,7 @@ jobs:
     description: "Run integration tests for Flutter"
     resource_class: macos.m1.medium.gen1
     macos:
-      xcode: 15.2
+      xcode: 16.3
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
@@ -312,7 +312,7 @@ jobs:
     description: "Run integration tests for Flutter"
     resource_class: macos.m1.medium.gen1
     macos:
-      xcode: 15.2
+      xcode: 16.3
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
@@ -416,9 +416,8 @@ jobs:
       - checkout
       - install-correct-cocoapods
       - setup-flutter
-      - run:
-          name: Install dependencies
-          command: bundle install
+      - revenuecat/install-gem-unix-dependencies:
+          cache-version: v1
       - replace-api-key
       - flutter-get-dependencies:
           project: revenuecat_examples/purchase_tester
