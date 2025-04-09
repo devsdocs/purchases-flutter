@@ -200,10 +200,10 @@ executors:
     shell: /bin/bash --login -o pipefail
 
   android-machine-emulator: &android-machine-emulator
-    executor:
-      name: android/android-machine
-      resource-class: large
-      tag: 2024.04.1
+    machine:
+      image: android-machine
+    resource_class: large
+    shell: /bin/bash --login -o pipefail
 
 jobs:
   lint:
