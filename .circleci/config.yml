@@ -459,7 +459,6 @@ jobs:
     resource_class: xlarge
     steps:
       - checkout
-      - install-correct-cocoapods
       - setup-flutter
       - revenuecat/install-gem-unix-dependencies:
           cache-version: v1
