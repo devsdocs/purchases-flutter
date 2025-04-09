@@ -480,11 +480,11 @@ jobs:
           name: Build Android app for testing
           command: |
             echo "Installing Flutter APK"
-            cd revenuecat_examples/purchase_tester/android
+            cd revenuecat_examples/purchase_tester
 
             flutter pub get
             flutter build apk --debug
-            flutter install -d emulator-5554
+            flutter install -d test-maestro
       - install-maestro-cli
       - run:
           name: Run Maestro Tests
