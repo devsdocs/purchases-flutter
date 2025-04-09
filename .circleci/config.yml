@@ -202,7 +202,6 @@ executors:
   android-machine-emulator: &android-machine-emulator
     machine:
       image: android-machine
-    resource_class: large
     shell: /bin/bash --login -o pipefail
 
 jobs:
@@ -462,7 +461,7 @@ jobs:
 
   maestro_android:
     description: "Run Maestro tests for Android"
-    <<: *android-machine-emulator
+    executor: *android-machine-emulator
     steps:
       - checkout
       - setup-flutter
