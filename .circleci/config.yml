@@ -459,13 +459,22 @@ jobs:
     resource_class: xlarge
     steps:
       - checkout
+      - install-correct-cocoapods
+      - setup-flutter
+      - revenuecat/install-gem-unix-dependencies:
+          cache-version: v1
       - replace-api-key
+      - flutter-get-dependencies:
+          project: revenuecat_examples/purchase_tester
       - android/create-avd:
           avd-name: test-maestro
-          system-image: system-images;android-32;google_apis;x86_64
           install: true
+          system-image: system-images;android-31;default;x86_64
+          additional-args: -d 50 # This is a 5.1in WVGA device
       - android/start-emulator:
           avd-name: test-maestro
+          post-emulator-launch-assemble-command: ''
+          restore-gradle-cache-post-emulator-launch: false
       - build-flutter-project:
           project: revenuecat_examples/purchase_tester
       - run:
@@ -473,7 +482,6 @@ jobs:
           command: |
             echo "Installing Flutter APK"
             cd revenuecat_examples/purchase_tester/android
-            
             flutter pub get
             flutter build apk --debug
             flutter install -d emulator-5554
