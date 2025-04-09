@@ -461,16 +461,13 @@ jobs:
       - checkout
       - setup-flutter
       - replace-api-key
-      - flutter-get-dependencies:
-          project: revenuecat_examples/purchase_tester
       - android/create-avd:
           avd-name: test-maestro
           install: true
           system-image: system-images;android-31;default;x86_64
-          additional-args: -d 50 # This is a 5.1in WVGA device
       - android/start-emulator:
           avd-name: test-maestro
-          post-emulator-launch-assemble-command: ''
+          post-emulator-launch-assemble-command: ./gradlew ui:revenuecatui:assembleDebugAndroidTest
           restore-gradle-cache-post-emulator-launch: false
       - build-flutter-project:
           project: revenuecat_examples/purchase_tester
