@@ -484,7 +484,7 @@ jobs:
 
             flutter pub get
             flutter build apk --debug
-            flutter install -d emulator-5554
+            flutter install --use-application-binary=build/app/outputs/flutter-apk/app-debug.apk -d emulator-5554
       - install-maestro-cli
       - run:
           name: Run Maestro Tests
