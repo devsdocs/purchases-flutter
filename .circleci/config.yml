@@ -199,6 +199,12 @@ executors:
       GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
     shell: /bin/bash --login -o pipefail
 
+  android-machine-emulator: &android-machine-emulator
+    executor:
+      name: android/android-machine
+      resource-class: large
+      tag: 2024.04.1
+
 jobs:
   lint:
     description: "Run static analysis for Flutter"
@@ -455,8 +461,8 @@ jobs:
           command: maestro test maestro/ios
 
   maestro_android:
-    executor: android-executor
-    resource_class: xlarge
+    description: "Run Maestro tests for Android"
+    <<: *android-machine-emulator
     steps:
       - checkout
       - setup-flutter
@@ -467,15 +473,14 @@ jobs:
           system-image: system-images;android-31;default;x86_64
       - android/start-emulator:
           avd-name: test-maestro
-          post-emulator-launch-assemble-command: ./gradlew ui:revenuecatui:assembleDebugAndroidTest
-          restore-gradle-cache-post-emulator-launch: false
-      - build-flutter-project:
-          project: revenuecat_examples/purchase_tester
+      # - build-flutter-project:
+      #     project: revenuecat_examples/purchase_tester
       - run:
           name: Build Android app for testing
           command: |
             echo "Installing Flutter APK"
             cd revenuecat_examples/purchase_tester/android
+
             flutter pub get
             flutter build apk --debug
             flutter install -d emulator-5554
