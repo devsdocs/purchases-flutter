@@ -191,13 +191,13 @@ executors:
     shell: /bin/bash --login -o pipefail
 
   android-executor: &android-executor
-    executor:
-      name: android/android-docker
-      resource-class: large
-      tag: 2024.04.1
+    docker:
+      - image: cimg/android:2024.04.1
+    resource_class: large
     environment:
       JVM_OPTS: -Xmx6g
       GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
+    shell: /bin/bash --login -o pipefail
 
 jobs:
   lint:
