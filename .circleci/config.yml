@@ -472,8 +472,8 @@ jobs:
           install: true
           system-image: system-images;android-31;default;x86_64
       - android/start-emulator:
-          working_directory: revenuecat_examples/purchase_tester/android
           avd-name: test-maestro
+          post-emulator-launch-assemble-command: ''
       # - build-flutter-project:
       #     project: revenuecat_examples/purchase_tester
       - run:
