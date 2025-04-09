@@ -460,8 +460,6 @@ jobs:
     steps:
       - checkout
       - setup-flutter
-      - revenuecat/install-gem-unix-dependencies:
-          cache-version: v1
       - replace-api-key
       - flutter-get-dependencies:
           project: revenuecat_examples/purchase_tester
