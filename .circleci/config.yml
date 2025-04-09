@@ -200,11 +200,11 @@ executors:
       GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
     shell: /bin/bash --login -o pipefail
 
-    android-machine-emulator:
-        machine:
-          image: android:2022.10.2
-        resource_class: large
-        shell: /bin/bash --login -o pipefail
+  android-machine-emulator:
+      machine:
+        image: android:2022.10.2
+      resource_class: large
+      shell: /bin/bash --login -o pipefail
 
 jobs:
   lint:
