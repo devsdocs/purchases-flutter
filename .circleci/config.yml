@@ -467,6 +467,13 @@ jobs:
       - checkout
       - setup-flutter
       - replace-api-key
+      - android/create-avd:
+          avd-name: test-maestro
+          install: true
+          system-image: system-images;android-31;default;x86_64
+      - android/start-emulator:
+          avd-name: test-maestro
+          post-emulator-launch-assemble-command: ''
       # - build-flutter-project:
       #     project: revenuecat_examples/purchase_tester
       - run:
