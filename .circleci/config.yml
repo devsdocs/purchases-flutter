@@ -202,7 +202,6 @@ executors:
 
   android-machine-emulator: &android-machine-emulator
     resource_class: large
-    tag: 2024.04.1
 
 jobs:
   lint:
@@ -460,7 +459,7 @@ jobs:
           command: maestro test maestro/ios
 
   maestro_android:
-    <<: *android-machine-emulator
+    executor: android-machine-emulator
     steps:
       - checkout
       - setup-flutter
