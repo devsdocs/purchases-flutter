@@ -471,8 +471,12 @@ jobs:
       - run:
           name: Build Android app for testing
           command: |
-            cd revenuecat_examples/purchase_tester
-            flutter build apk
+            echo "Installing Flutter APK"
+            cd revenuecat_examples/purchase_tester/android
+            
+            flutter pub get
+            flutter build apk --debug
+            flutter install -d emulator-5554
       - install-maestro-cli
       - run:
           name: Run Maestro Tests
