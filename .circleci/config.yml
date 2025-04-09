@@ -461,7 +461,7 @@ jobs:
 
   maestro_android:
     description: "Run Maestro tests for Android"
-    executor: *android-machine-emulator
+    executor: android-machine-emulator  # not *android-machine-emulator
     steps:
       - checkout
       - setup-flutter
